@@ -1,78 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import { FaBell, FaHeart, FaCog, FaUser } from "react-icons/fa";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
-import React, { useEffect, useState } from "react";
-import { dataset } from "@/sanity/env";
-
-interface simplifiedCar {
-  _id: string;
-  name: string;
-  type: string;
-  slug: {
-    current: string;
-  };
-  image: string;
-  fuelCapacity: string;
-  transmission: string;
-  seatingCapacity: string;
-  pricePerDay: string;
-}
-
-async function getData() {
-  const query = `*[_type == "car"]{
-  _id,
-  name,
-    type,
-    slug,
-    image{
-    asset->{url}
-  },
-  fuelCapacity,
-    transmission,
-    seatingCapacity,
-    pricePerDay,
-    
-}`;
-  const data = await client.fetch(query);
-  return data;
-}
 
 export default function Navbar() {
-  const userLoggedIn = false;  
-  const [data, setData] = useState<simplifiedCar[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedData = await getData();
-      setData(fetchedData);
-    };
-
-    fetchData();
-  }, []);
-
-
+  const userLoggedIn = false;
 
   return (
     <nav className="flex flex-col md:flex-row items-center md:justify-between px-4 md:px-8 py-6 bg-white shadow-sm">
-      {/* Top Section: Logo and Profile */}
       <div className="flex items-center justify-between w-full md:w-auto">
-        {/* Logo */}
         <Link href="/" passHref>
           <div className="text-blue-600 font-[700] text-[24px] md:text-[32px] cursor-pointer">
             <span className="px-2 py-1 rounded">MORENT</span>
           </div>
         </Link>
-       
-      
 
-        {/* Profile Image (visible only on smaller screens) */}
+      
         <div className="w-8 h-8 mt-3 overflow-hidden md:hidden">
           {userLoggedIn ? (
             <Image
-              src="/images/Profile.png"  
+              src="/images/Profile.png" 
               alt="Profile"
               width={40}
               height={40}
@@ -83,9 +29,6 @@ export default function Navbar() {
             </Link>
           )}
         </div>
-
-    
-
       </div>
 
       {/* Icons Section */}
@@ -132,7 +75,7 @@ export default function Navbar() {
           </button>
         </Link>
 
-         
+        {/* Added Link to FaCog icon */}
         <Link href="/setting" passHref>
           <button>
             <FaCog className="text-gray-600 w-5 h-5" />
