@@ -21,7 +21,7 @@ const Signin = () => {
 
     if (email === storedUser.email && password === storedUser.password) {
     
-      if (email === "manan0786@gmail.com" && password === "0987654321") {
+      if (email === "r.manan0786@gmail.com" && password === "0987654321") {
         router.push("/AdminDashboard");
       } else {
         router.push("/UserDashboard");
