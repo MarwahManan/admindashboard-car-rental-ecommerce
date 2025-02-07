@@ -42,7 +42,7 @@ async function getData() {
 
 export default function Navbar() {
   const userLoggedIn = false;  
-  const [data, setData] = useState<simplifiedCar[]>([]);
+  // const [data, setData] = useState<simplifiedCar[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
