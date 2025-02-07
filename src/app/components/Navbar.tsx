@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FaBell, FaHeart, FaCog, FaUser } from "react-icons/fa";
 import Link from "next/link";
-import { client } from "../sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 import React, { useEffect, useState } from "react";
 import { dataset } from "@/sanity/env";
 
